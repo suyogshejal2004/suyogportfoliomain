@@ -18,26 +18,37 @@ const Contact = () => {
     setForm({ ...form, [name]: value });
   };
 
+  // --- MODIFICATION IS HERE ---
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading state
+    setLoading(true);
 
     try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      // We now use emailjs.send and pass the 'form' state object directly
+      await emailjs.send(
+        "service_aww1i9f", // Your Service ID
+        "template_b1m61pf", // Your Template ID
+        {
+          from_name: form.name,
+          to_name: "Your Name", // Or any other name you want
+          from_email: form.email,
+          to_email: "your.email@example.com", // Your receiving email
+          message: form.message,
+        },
+        "-_zcN-ipd1y83jgod" // Your Public Key
       );
 
       // Reset form and stop loading
+      alert("Thank you! I will get back to you as soon as possible. 😊");
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+      console.error("EmailJS Error:", error);
+      alert("Oops! Something went wrong. Please try again. 😥");
     } finally {
-      setLoading(false); // Always stop loading, even on error
+      setLoading(false);
     }
   };
+  // --- END OF MODIFICATION ---
 
   return (
     <section id="contact" className="flex-center section-padding">

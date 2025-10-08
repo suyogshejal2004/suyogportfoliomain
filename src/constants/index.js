@@ -29,10 +29,11 @@ const words = [
 ];
 
 const counterItems = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 200, suffix: "+", label: "Satisfied Clients" },
-  { value: 108, suffix: "+", label: "Completed Projects" },
-  { value: 90, suffix: "%", label: "Client Retention Rate" },
+  
+  { value: 2, suffix: "+", label: "Years of Learning React Native" }, // your learning experience
+  { value: 5, suffix: "+", label: "Projects Built" },                 // personal or practice projects
+  { value: 2, suffix: "+", label: "Internship Completed" },           // The Skill Guru Foundation
+  { value: 3, suffix: "+", label: "Technologies Learned" }  
 ];
 
 const logoIconsList = [
